@@ -12,45 +12,28 @@ app.use(bodyParser.json());
 
 //str1 = bibleMaleNames.random();
 
-
-mongoose.connect("mongodb+srv://saad:saad@cluster0.zqtb3.mongodb.net/notesdb").then(function()
+const mongoDbPath = "mongodb+srv://saad:saad@cluster0.zqtb3.mongodb.net/notesdb";
+mongoose.connect(mongoDbPath).then(function()
     {
         app.get("/", function(req, res) {
-            const response = {message: "API WORKS !"};
+            const response = {statuscode: res.statusCode ,message: "API WORKS !"};
             res.json(response);
             //res.send(str1);
         });
-        
-        app.get("/names/list", async function(req, res){
+
+        router.get("/list", function(req, res){
             //var names = await Name.find({ id: req.params.id });
-            var names = await Name.find({ id: Math.floor(Math.random() * 4 )});
+            var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
             res.json(names);
         });
-
-        app.post("/names/add", async function(req, res){
         
-            await Name.deleteOne({id: req.body.id});
-
-            const newName = new Name({
-                id: req.body.id,
-                name: req.body.name,
-            });
-            await newName.save();
-
-            const response = { message: "New Name Created!" + `id: ${req.body.id}`};
-            res.json(response);
-        });
-
-        app.post("/names/delete", async function(req, res){
-
-            await Name.deleteOne({id: req.body.id});
-            const response = {message: "Name Deleted! " + `id: ${req.body.id}` };
-            res.json(response);
-        }); 
+        const nameRouter =  require('./routes/Name');
+        app.use("/names", nameRouter);
     });
 // HomePage Route
 
 
-app.listen(5002, function(){
-    console.log("Server started at port: 5002");
+const PORT = process.env.PORT || 5002;
+app.listen(PORT, function(){
+    console.log("Server started at port: " + PORT);
 });
