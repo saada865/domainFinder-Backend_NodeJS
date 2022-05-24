@@ -21,11 +21,11 @@ mongoose.connect(mongoDbPath).then(function()
             //res.send(str1);
         });
 
-        // router.get("/list", function(req, res){
-        //     var names = await Name.find({ id: req.params.id });
-        //     //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
-        //     res.json(names);
-        // });
+        app.get("/list", function(req, res){
+            var names = await Name.find({ id: req.params.id });
+            //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
+            res.json(names);
+        });
         
         const nameRouter =  require('./routes/Name');
         app.use("/names", nameRouter);
