@@ -33,7 +33,7 @@ mongoose.connect(mongoDbPath).then(function()
 // HomePage Route
 
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5000; //5002;
 app.listen(PORT, function(){
     console.log("Server started at port: " + PORT);
 });
