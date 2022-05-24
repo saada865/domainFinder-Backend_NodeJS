@@ -12,8 +12,7 @@ app.use(bodyParser.json());
 
 //str1 = bibleMaleNames.random();
 
-const mongoDbPath = "mongodb://saad:saad@cluster0-shard-00-00.zqtb3.mongodb.net:27017,cluster0-shard-00-01.zqtb3.mongodb.net:27017,cluster0-shard-00-02.zqtb3.mongodb.net:27017/?ssl=true&replicaSet=atlas-14jzfm-shard-0&authSource=admin&retryWrites=true&w=majority";
-// "mongodb+srv://saad:saad@cluster0.zqtb3.mongodb.net/notesdb";
+const mongoDbPath = "mongodb+srv://saad:saad@cluster0.zqtb3.mongodb.net/notesdb";
 mongoose.connect(mongoDbPath).then(function()
     {
         app.get("/", function(req, res) {
