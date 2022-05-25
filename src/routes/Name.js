@@ -4,8 +4,10 @@ const router = express.Router();
 const Name = require('./../models/Name')
 
 router.get("/list", async function(req, res){
-    var names = await Name.find({ id: req.body.id });
+    var names = await Name.find({ id: "9" });
+    //var names2 = Name.collection.$print
     //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
+    
     res.json(names);
 });
 
