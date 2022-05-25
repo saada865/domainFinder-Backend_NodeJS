@@ -21,11 +21,7 @@ mongoose.connect(mongoDbPath).then(function()
             //res.send(str1);
         });
 
-        app.post("/list", function(req, res){
-            var names = await Name.find({ id: req.body.id });
-            //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
-            res.json(names);
-        });
+        
         // app.get("/list", function(req, res){
         //     var names = await Name.find({ id: req.params.id });
         //     //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
@@ -38,7 +34,7 @@ mongoose.connect(mongoDbPath).then(function()
 // HomePage Route
 
 
-const PORT = process.env.PORT || 5000; //5002;
+const PORT = process.env.PORT || 5002; //5002;
 app.listen(PORT, function(){
     console.log("Server started at port: " + PORT);
 });
