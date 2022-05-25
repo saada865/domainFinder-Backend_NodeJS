@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Name = require('./../models/Name')
 
-router.post("/list", async function(req, res){
+router.get("/list", async function(req, res){
     var names = await Name.find({ id: req.body.id });
     //var names = await Name.find({ id: Math.floor(Math.random() * 5 )});
     res.json(names);
